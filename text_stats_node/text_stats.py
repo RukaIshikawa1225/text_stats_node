@@ -5,12 +5,14 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+from std_msgs.msg import Int32MultiArray
+
 
 class TextStatsNode(Node):
     def __init__(self):
         super().__init__('text_stats_node')
 
-        # Subscriber の作成
+        # Subscriber
         self.sub = self.create_subscription(
             String,
             'input_text',
@@ -18,9 +20,24 @@ class TextStatsNode(Node):
             10
         )
 
+        # Publisher
+        self.pub = self.create_publisher(
+            Int32MultiArray,
+            'text_stats',
+            10
+        )
+
     def callback(self, msg):
-        # 受信したデータをログに出すだけ
-        self.get_logger().info(f"Received text: {msg.data}")
+        
+        text = msg.data
+
+        char_count = len(text)
+        word_count = len(text.split())
+
+        out = Int32MultiArray()
+        out.data = [char_count, word_count]
+
+        self.pub.publish(out)
 
 
 def main():
