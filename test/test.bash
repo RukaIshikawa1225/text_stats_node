@@ -1,23 +1,21 @@
 #!/bin/bash
 set -e
 
-# ROS 2 環境
 source /opt/ros/humble/setup.bash
-source install/setup.bash
+source ros2_ws/install/setup.bash
 
-# ノード起動
+echo "START node"
 ros2 run text_stats_node text_stats &
 NODEPID=$!
 
-# 起動待ち
-sleep 2
+sleep 3
 
-# 入力を1回送信
+echo "PUBLISH"
 ros2 topic pub --once /input_text std_msgs/String "data: hello world"
 
-# 出力を1回だけ受信して検査
-ros2 topic echo /text_stats --once | grep -q "\[11, 2\]"
+echo "ECHO"
+timeout 5 ros2 topic echo /text_stats | grep -m1 -q "\[11, 2\]"
 
-# ノード停止
+echo "KILL"
 kill $NODEPID
 
