@@ -22,6 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           source /opt/ros/humble/setup.bash
+          sudo apt-get update
           cd ros2_ws
           rosdep update
           rosdep install --from-paths src --ignore-src -y
