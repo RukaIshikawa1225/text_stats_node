@@ -21,9 +21,9 @@ publish する ROS 2 パッケージ**です。
 ---
 
 ## 動作環境
-- Ubuntu 20.04(ローカル開発環境)
-- Ubuntu 22.04(GitHub Actions)
-- ROS2 Humble
+- Linux (Ubuntu 20.04でローカル動作確認済み)
+- ROS 2 (Humble/ Foxy/ Galactic)
+- Ubuntu 22.04(GitHub ActionsによるCI環境)
 
 標準のROS2パッケージのみを使用しており、追加の外部ライブラリは不要です。
 
