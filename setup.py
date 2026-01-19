@@ -15,11 +15,13 @@ setup(
     zip_safe=True,
     maintainer='ruka',
     maintainer_email='ishikawaruka.1225@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='Text statistics ROS 2 node',
+    license='BSD-3-Clause',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'text_stats = text_stats_node.scripts.text_stats:main',
         ],
     },
 )
+
