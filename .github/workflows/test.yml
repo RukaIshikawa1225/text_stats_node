@@ -15,7 +15,7 @@ jobs:
           sudo apt-get update
 
       - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@v0.9
+        uses: ros-tooling/setup-ros@v0.10.1
         with:
           required-ros-distributions: humble
 
