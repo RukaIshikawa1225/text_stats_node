@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# SPDX-FileCopyrightText: Ruka Ishikawa
+# SPDX-FileCopyrightText: 2026 Ruka Ishikawa
 # SPDX-License-Identifier: BSD-3-Clause
 
 import rclpy
