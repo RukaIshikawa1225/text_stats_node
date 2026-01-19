@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'text_stats = text_stats_node.scripts.text_stats:main',
+            'text_stats = text_stats_node.text_stats:main',
         ],
     },
 )
