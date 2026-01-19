@@ -19,14 +19,6 @@ jobs:
           mkdir -p ros2_ws/src/text_stats_node
           rsync -av --exclude='.git' --exclude='.github' ./ ros2_ws/src/text_stats_node/
 
-      - name: Install dependencies
-        run: |
-          source /opt/ros/humble/setup.bash
-          sudo apt-get update
-          cd ros2_ws
-          rosdep update
-          rosdep install --from-paths src --ignore-src -y
-
       - name: Build
         run: |
           source /opt/ros/humble/setup.bash
