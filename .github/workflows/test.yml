@@ -9,20 +9,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Prepare apt
-        run: |
-          sudo rm -rf /var/lib/apt/lists/*
-          sudo apt-get update
-
       - name: Setup ROS 2
-        uses: ros-tooling/setup-ros@v0.10.1
+        uses: ros-tooling/setup-ros@v0.7
         with:
           required-ros-distributions: humble
 
       - name: Create workspace
         run: |
-          mkdir -p ros2_ws/src/text_stats_node
-          rsync -av --exclude='.git' --exclude='.github' ./ ros2_ws/src/text_stats_node/
+          mkdir -p ros2_ws/src
+          cp -r . ros2_ws/src/text_stats_node
+
+      - name: Install dependencies
+        run: |
+          source /opt/ros/humble/setup.bash
+          cd ros2_ws
+          rosdep update
+          rosdep install --from-paths src --ignore-src -y
 
       - name: Build
         run: |
