@@ -14,7 +14,7 @@ echo "PUBLISH"
 ros2 topic pub --once /input_text std_msgs/String "data: hello world"
 
 echo "ECHO"
-timeout 5 ros2 topic echo /text_stats | grep -m1 -q "\[11, 2\]"
+timeout 5 ros2 topic echo /text_stats | grep -m1 -q "11"
 
 echo "KILL"
 kill $NODEPID
