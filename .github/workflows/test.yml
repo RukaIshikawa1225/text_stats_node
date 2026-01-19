@@ -16,8 +16,8 @@ jobs:
 
       - name: Create workspace
         run: |
-          mkdir -p ros2_ws/src
-          cp -r . ros2_ws/src/text_stats_node
+          mkdir -p ros2_ws/src/text_stats_node
+          rsync -av --exclude='ros2_ws' --exclude='.git' --exclude='.github' ./ ros2_ws/src/text_stats_node/
 
       - name: Install dependencies
         run: |
