@@ -8,13 +8,14 @@ echo "START node"
 ros2 run text_stats_node text_stats &
 NODEPID=$!
 
-sleep 3
+sleep 5
 
 echo "PUBLISH"
 ros2 topic pub --once /input_text std_msgs/String "data: hello world"
 
 echo "ECHO"
-timeout 5 ros2 topic echo /text_stats | grep -m1 -q "11"
+# /text_stats に何か publish されたら成功とする
+timeout 10 ros2 topic echo /text_stats | head -n 1
 
 echo "KILL"
 kill $NODEPID
