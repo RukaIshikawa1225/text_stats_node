@@ -74,7 +74,7 @@ data:
 この例では：
 - 文字数:11
 - 単語数:2
-が計算され、'Int32MultiArray'としてpublishされます。
+が計算され、`Int32MultiArray`としてpublishされます。
 
 ---
 
